@@ -1,0 +1,14 @@
+
+
+Date <- print(as.Date(scenario_1$`scen1_dem_node_ 1`))
+Time <- print(format(as.POSIXct(scenario_1$`scen1_dem_node_ 1`), format = "%H:%M:%S"))
+
+scenario_1 <- cbind(Date, Time, scenario_1)
+
+scenario_1<- scenario_1[,c(-3,-70)]
+
+scenario_11[3]
+
+scenario_1[3]
+write.csv(scenario_1,"/Users/mphonkadimeng/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-1/scen_1.csv", row.names = FALSE)
+

@@ -1,0 +1,9 @@
+frequency(scen1_sample)
+class(scen1_sample)
+
+save(scenario_1, file = "scenario_1data.RData")
+
+install.packages("urca")
+install.packages("forecast")
+install.packages("tseries")
+install.packages("TSstudio")

@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "MG Nkadimeng"
+date: "2022-08-23"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+library(epanetReader)
+
+n1 <- read.inp("~/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-1/Hanoi_CMH_Scenario-1.inp") 
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{R T}
+
+summary(n1)
+```
+
+
+```{r ej}
+
+library(ggplot2)
+cr <- n1$Coordinates
+ggplot(cr , aes(X.coord, Y.coord)) + geom_point()
+
+```
+```{r all}
+
+n1
+
+```

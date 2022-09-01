@@ -1,0 +1,95 @@
+# Using tidyverse
+library(tidyverse)
+library(MASS)
+library(ggplot2)
+
+folder_demand <- "/Users/mphonkadimeng/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-2/Demands"
+demand_data <- list.files(path = folder_demand,
+                          pattern = "*.csv",
+                          full.names = TRUE) %>% 
+  lapply(read_csv) %>% 
+  bind_cols()
+
+
+demand_data1 <- demand_data[,seq(2,64,2)] #Dropping timestamp columns 
+demand_data1 <- cbind(demand_data$Timestamp...1, demand_data1)#reattach timestamp columns 
+demand_sample <- demand_data1[sample(nrow(demand_data1), 17000),] 
+
+
+ggplot(data = demand_sample, aes(Value...12, Value...18)) + 
+  geom_point() + 
+  geom_smooth(method = "rlm")
+
+dem_nam <- replicate(33, "Scenario2_Demand_Node_") #New names for coulmn
+
+dem_names <- sapply(dem_nam, function(x) paste(x, seq(0,33), sep = ""))
+dem_names <- dem_names[1:33]
+
+names(demand_data1) <- str_squish(dem_names) 
+
+head(demand_data1)
+
+#Pressure scenario 1 
+
+folder_pressure <- "/Users/mphonkadimeng/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-2/Pressures"
+
+
+pressure_data <- list.files(path = folder_pressure,
+                            pattern = "*.csv",
+                            full.names = TRUE) %>% 
+  lapply(read_csv) %>% 
+  bind_cols()
+
+pressure_data1 <- pressure_data[,seq(2,64,2)] #Dropping timestamp columns 
+
+
+pressure_sample <- pressure_data1[sample(nrow(pressure_data1), 17000),] 
+
+ggplot(data = pressure_sample, aes(Value...12, Value...18)) + 
+  geom_point() + 
+  geom_smooth(method = "rlm")
+
+
+pressure_nam <- replicate(32, "Scenario2_Pressure_Node_") #New names for coulmns
+
+press_names <- sapply(pressure_nam, function(x) paste(x, seq(1,32), sep = "")) 
+press_names <- press_names[1:32]
+
+names(pressure_data1) <- press_names
+
+
+##Flow 
+
+flow_folder1 <- "/Users/mphonkadimeng/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-2/Flows"
+flow1_data <- list.files(path = flow_folder1,
+                         pattern = "*.csv",
+                         full.names = TRUE) %>% 
+  lapply(read_csv) %>% 
+  bind_cols()
+dim(flow1_data)
+
+flow1_data <- flow1_data[,seq(2,68,2)] #Dropping timestamp columns 
+## flow1_data  <- cbind(demand_data$Timestamp...1, demand_data1)#reattach timestamp columns 
+flow1_sample <- flow1_data[sample(nrow(flow1_data), 17000),] 
+
+colnames(flow1_sample)
+ggplot(data = flow1_sample, aes(Value...12, Value...18)) + 
+  geom_point() + 
+  geom_smooth(method = "rlm")
+
+flow_nam <- replicate(34, "Scenario2_Flow_Link_") #New names for coulmn
+
+flw_names <- sapply(flow_nam, function(x) paste(x, seq(1,34), sep = ""))
+flw_names <- flw_names[1:34]
+
+names(flow1_data) <- flw_names
+
+View(flow1_data)
+
+head(demand_data1$Scenario2_Demand_Node_1)
+View(flow1_data)
+
+View(demand_data1)
+View(pressure_data1)
+
+sc2_data <- cbind(demand_data1, flow1_data, pressure_data1)

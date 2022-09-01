@@ -1,0 +1,26 @@
+scen1_sample %>%
+  ggplot(aes(x = Time, y = `scen1_dem_node_ 3`, group = WeekDay, col = WeekDay)) +
+  
+  geom_line() + transition_time(Date) +
+  ease_aes('linear') +
+  shadow_mark(colour = "grey70") +
+  labs(title = 'Daily: {frame_time}')
+
+library(tidyverse)
+library(gganimate) 
+library(ggplot2)
+ggplot(scen1_sample, aes(scen1_flow_link_3,scen1_pressure_node_3, colour = WeekDay )) + 
+  geom_point() + 
+  transition_time(Date) + 
+  labs(title = "Date: {frame_time}") +
+  shadow_mark(alpha = 0.5, size = 0.9)
+
+library(epanetReader)
+
+n1 <- read.inp("~/ (Archive)/Documents/GitHub/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-1/Hanoi_CMH_Scenario-1.inp") 
+
+summary(n1)
+
+cr <- n1$Coordinates
+
+ggplot(cr , aes(X.coord, Y.coord)) + geom_point()

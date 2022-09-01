@@ -1,0 +1,36 @@
+
+scen1_sample <- scenario_1[1:4320,]  
+
+View(scen1_sample)
+
+
+ggplot(scen1_sample, aes(scen1_flow_link_3, scen1_pressure_node_3, colour = WeekDay)) + 
+  geom_point()
+
+scenario_1$DayNight = with(scenario_1$Time,
+                  ifelse(TOD > 05:30:00 & TOD < 20:00:00, "Day", "Night")
+
+
+ggplot(scen1_sample, aes(WeekDay, `scen1_dem_node_ 3`,  colour = WeekDay)) +
+geom_boxplot() +
+  stat_summary()
+
+ggplot(scen1_sample, aes(Month)) + geom_bar()
+
+ggplot(scen1_sample, aes(Time,`scen1_dem_node_ 3`, colour = WeekDay)) + 
+  geom_line(aes(colour = WeekDay)) + 
+  facet_grid(~ Month) + geom_smooth(span = 0.2)
+
+ggplot(scen1_sample, aes(Time,`scen1_dem_node_ 3`)) + geom_line() + geom_smooth(span = 0.3)
+
+View(scen1_sample)
+
+library(lubridate)
+library(MASS)
+scenario_1$WeekDay <- wday(scenario_1$Date, label = T)
+scenario_1$Month <- month(scenario_1$Date, label = T)
+scenario_1$Time <- as.POSIXct(strptime(scenario_1$Time, format="%H:%M:%S"))
+
+
+colnames(scen1_sample)
+
