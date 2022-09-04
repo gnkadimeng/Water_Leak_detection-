@@ -1,14 +1,14 @@
 {
-    "id": "D3811881",
-    "path": "~/Documents/GitHub/Capstone/scenario4DataCleaning.R",
-    "project_path": "scenario4DataCleaning.R",
+    "id": "0DB9EC21",
+    "path": "~/Documents/GitHub/Capstone/Scenario6DataCleaning.R",
+    "project_path": "Scenario6DataCleaning.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": true,
-    "created": 1662042431050.0,
+    "created": 1662043268448.0,
     "source_on_save": false,
-    "relative_order": 8,
+    "relative_order": 11,
     "properties": {
         "tempName": "Untitled7",
         "source_window_id": "",
@@ -17,11 +17,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1662042454,
+    "lastKnownWriteTime": 1662043305,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1662042570561,
+    "last_content_update": 1662043378980,
     "read_only": false,
     "read_only_alternatives": []
 }
