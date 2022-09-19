@@ -1,0 +1,43 @@
+---
+title: "Operartional data we need to display (front-End)"
+author: ""
+date: "2022-09-19"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose 
+
+The purpose of this document is to share and describe the data that we have to display for the operator from the operational perspective. 
+
+```{r desc}
+library(epanetReader)
+library(tidyr)
+n1 <- read.inp("~/Projects/LeakDB/CCWI-WDSA2018/Benchmarks/Hanoi_CMH/Scenario-1/Hanoi_CMH_Scenario-1.inp")
+```
+
+## Pipeline layout 
+
+The pipeline layout is consistent across all the operationg scenarios. 
+
+```{r pressure, echo=FALSE}
+plot(n1)
+```
+
+Elements of the pipeline
+
+```{r summary}
+names(n1)
+```
+Junctions
+Pipes metadata we need to display 
+```{r pipes}
+n1[2:7]
+```
+
+

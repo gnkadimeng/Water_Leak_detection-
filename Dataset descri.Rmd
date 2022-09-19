@@ -1,0 +1,35 @@
+---
+title: "Dataset for the model"
+output:
+  pdf_document: default
+  html_document: default
+date: "2022-09-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Dataset 
+
+This dataset comprises of all the 10 scenarios merged columns and rows 
+
+A pipe junction node is used to transfer water from one place to another. It can be used to represent a pump station in water supply system.
+
+
+
+data labels, features 
+```{r names}
+library(readr)
+ops_data <- read_csv("ops_data.csv")
+names(ops_data)
+```
+
+First six features (rows)
+```{r head}
+head(ops_data)
+```
+
+
+
+
